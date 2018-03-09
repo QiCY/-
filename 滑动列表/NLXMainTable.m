@@ -8,7 +8,8 @@
 
 #import "NLXMainTable.h"
 
-#define CELL_IDENTIFIER          @"mainCell"
+#define CELL_IDENTIFIER          @"mainCell_01"
+#define CELL_IDENTIFIER_0          @"mainCell_00"
 #define CELL_ROWHEIGHT          44
 @implementation NLXMainTable
 - (id)initWithFrame:(CGRect)frame
@@ -19,6 +20,7 @@
     return self;
 }
 
+//创建tableView
 - (UITableView *)tableView
 {
     if (!_tableView) {
@@ -27,11 +29,14 @@
         _tableView.dataSource = self;
         _tableView.rowHeight = CELL_ROWHEIGHT;
         [_tableView registerClass:[MainCell class] forCellReuseIdentifier:CELL_IDENTIFIER];
+         [_tableView registerClass:[MainCell class] forCellReuseIdentifier:CELL_IDENTIFIER_0];
         _tableView.tableFooterView = [UIView new];
         [self addSubview:_tableView];
     }
     return _tableView;
 }
+
+//初始化数据源
 - (NSMutableArray *)dataList
 {
     if (!_dataList) {
@@ -44,33 +49,54 @@
    
     return _dataList;
 }
+#pragma mark ======UITableViewDelegate+++++++++
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (section == 0) {
+        return 1;
+    }
     return self.dataList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MainCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER];
-    NSDictionary *data = _dataList[indexPath.row];
-    cell.titleLab.text = data[@"title"];
-    cell.codeLab.text = data[@"code"];
-    cell.index = indexPath.row;
-    cell.scrollView.contentOffset = CGPointMake(_lastOffX, 0);
-    cell.scrollView.delegate = self;
-    
-    return cell;
+    if (indexPath.section == 0) {
+        MainCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_0];
+        cell.titleLab.text = @"编号代码";
+//        cell.codeLab.text = data[@"code"];
+        cell.titleLab.frame = CGRectMake(15, 0, WIDTH/3-15, CELL_ROWHEIGHT);
+        cell.scrollView.contentOffset = CGPointMake(_lastOffX, 0);
+        cell.scrollView.delegate = self;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }else{
+        MainCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER];
+        NSDictionary *data = _dataList[indexPath.row];
+        cell.titleLab.text = data[@"title"];
+        cell.codeLab.text = data[@"code"];
+        
+        cell.scrollView.contentOffset = CGPointMake(_lastOffX, 0);
+        cell.scrollView.delegate = self;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }
 }
+
+#pragma mark ++++++++++UIScrollViewDelegate++++++++++
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     NSArray *cells = [self.tableView visibleCells];
     if ([scrollView isKindOfClass:[UITableView class]]) {
         for (MainCell *cell in cells) {
                 cell.scrollView.delegate = self;
-                cell.userInteractionEnabled = NO;
+//                cell.userInteractionEnabled = NO;
             
         }
-   
     }else{
         for (MainCell *cell in cells) {
             if (cell.scrollView != scrollView) {
@@ -81,8 +107,6 @@
             cell.scrollView.contentOffset = scrollView.contentOffset;
         }
     }
-  
-    
 }
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
@@ -135,11 +159,13 @@
         for (int i = 0; i<10; i++) {
         UILabel*   codeLab = [[UILabel alloc] initWithFrame:CGRectMake(i*WIDTH/3, 0, WIDTH/3, CELL_ROWHEIGHT)];
             codeLab.textAlignment = NSTextAlignmentCenter;
-            codeLab.font = [UIFont systemFontOfSize:10 weight:1];
+            codeLab.font = [UIFont systemFontOfSize:14 weight:1];
             codeLab.textColor = [UIColor redColor];
             codeLab.text = @"100";
             [_scrollView addSubview:codeLab];
         }
+        _scrollView.showsHorizontalScrollIndicator = NO;
+        
         _scrollView.contentSize = CGSizeMake(WIDTH/3*10, CELL_ROWHEIGHT);
         [self.contentView addSubview:_scrollView];
     }

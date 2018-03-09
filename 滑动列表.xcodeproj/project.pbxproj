@@ -14,6 +14,7 @@
 		844EAAD4202AD596004A4297 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844EAAD2202AD596004A4297 /* LaunchScreen.storyboard */; };
 		844EAAD7202AD596004A4297 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 844EAAD6202AD596004A4297 /* main.m */; };
 		844EAADF202AD602004A4297 /* NLXMainTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 844EAADE202AD602004A4297 /* NLXMainTable.m */; };
+		846C6378202D7B6100563B53 /* NLXLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C6377202D7B6100563B53 /* NLXLineView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		844EAAD6202AD596004A4297 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		844EAADD202AD602004A4297 /* NLXMainTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NLXMainTable.h; sourceTree = "<group>"; };
 		844EAADE202AD602004A4297 /* NLXMainTable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NLXMainTable.m; sourceTree = "<group>"; };
+		846C6376202D7B6100563B53 /* NLXLineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NLXLineView.h; sourceTree = "<group>"; };
+		846C6377202D7B6100563B53 /* NLXLineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NLXLineView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +75,8 @@
 				844EAAD6202AD596004A4297 /* main.m */,
 				844EAADD202AD602004A4297 /* NLXMainTable.h */,
 				844EAADE202AD602004A4297 /* NLXMainTable.m */,
+				846C6376202D7B6100563B53 /* NLXLineView.h */,
+				846C6377202D7B6100563B53 /* NLXLineView.m */,
 			);
 			path = "滑动列表";
 			sourceTree = "<group>";
@@ -107,7 +112,7 @@
 				TargetAttributes = {
 					844EAAC3202AD596004A4297 = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -148,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				844EAADF202AD602004A4297 /* NLXMainTable.m in Sources */,
+				846C6378202D7B6100563B53 /* NLXLineView.m in Sources */,
 				844EAACC202AD596004A4297 /* ViewController.m in Sources */,
 				844EAAD7202AD596004A4297 /* main.m in Sources */,
 				844EAAC9202AD596004A4297 /* AppDelegate.m in Sources */,
@@ -284,14 +290,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3RSHV95NGG;
 				INFOPLIST_FILE = "滑动列表/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Newlixon.----";
+				PRODUCT_BUNDLE_IDENTIFIER = Newlixon.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -299,14 +307,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3RSHV95NGG;
 				INFOPLIST_FILE = "滑动列表/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Newlixon.----";
+				PRODUCT_BUNDLE_IDENTIFIER = Newlixon.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "NLXMainTable.h"
+#import "NLXLineView.h"
 @interface ViewController ()
 
 @end
@@ -19,6 +20,10 @@
     // Do any additional setup after loading the view, typically from a nib.
     NLXMainTable *table = [[NLXMainTable alloc] initWithFrame:CGRectMake(0, 0, WIDTH, self.view.frame.size.height)];
     [self.view addSubview:table];
+    
+//    NLXLineView *lineView = [[NLXLineView alloc] initWithFrame:CGRectMake(20, 100, self.view.frame.size.width - 40, 300)];
+//    [self.view addSubview:lineView];
+    
 }
 
 
